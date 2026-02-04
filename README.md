@@ -1,4 +1,4 @@
-```markdown
+
 # 🌸 ikigAI — AI Career Quest
 
 **ikigAI** is an AI-powered career discovery and learning roadmap platform that helps users discover their ideal career path and receive a personalized step-by-step growth journey.
@@ -118,18 +118,7 @@ Server runs at:
 http://localhost:5000
 ```
 
----
 
-## 🔌 API Endpoints
-
-| Endpoint            | Purpose                    |
-| ------------------- | -------------------------- |
-| `/init-user`        | Creates user document      |
-| `/discover-career`  | AI career discovery        |
-| `/generate-roadmap` | AI learning roadmap        |
-| `/get-history`      | Fetch user roadmap history |
-
----
 
 ## 🎯 How It Works
 
@@ -163,7 +152,4 @@ It is an **AI Career Learning System** that:
 
 ---
 
-**ikigAI = AI that helps you find what you love, what you're good at, and where you can grow.**
 
-```
-```
