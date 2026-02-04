@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Career Discovery</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background: radial-gradient(circle at top,#0f172a,#020617);
+  color:#e5e7eb;
+}
+
+/* NAVBAR */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  border-bottom:1px solid #1e293b;
+}
+.nav a{
+  color:#38bdf8;
+  margin-left:15px;
+  text-decoration:none;
+}
+
+/* CENTER CARD */
+.card{
+  max-width:600px;
+  margin:80px auto;
+  padding:40px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(56,189,248,0.4);
+  border-radius:18px;
+  box-shadow:0 0 40px rgba(56,189,248,0.2);
+  text-align:center;
+}
+
+h1{color:#38bdf8;}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  background:#020617;
+  border:1px solid #38bdf8;
+  color:white;
+  border-radius:8px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:15px;
+  background:#38bdf8;
+  color:#020617;
+  border:none;
+  font-weight:bold;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover{ transform:scale(1.05); }
+
+/* RESULT */
+#result{
+  margin-top:25px;
+  white-space:pre-wrap;
+  text-align:left;
+  opacity:0;
+  transition:0.6s;
+}
+#result.show{ opacity:1; }
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <div><strong>CareerQuest</strong></div>
+  <div>
+    <a href="discover.html">Discover</a>
+    <a href="index.html">Roadmap</a>
+  </div>
+</div>
+
+<div class="card">
+  <h1>🌸 Discover Your Career Fit</h1>
+  <p>Answer these and unlock your ideal career path</p>
+
+  <input id="interests" placeholder="What do you enjoy doing?">
+  <input id="strengths" placeholder="What are you good at?">
+  <input id="workstyle" placeholder="Your preferred work style">
+
+  <button onclick="discover()">✨ Reveal My Path</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+async function discover(){
+  const btn = document.querySelector("button");
+  btn.innerText = "Analyzing...";
+  btn.disabled = true;
+
+  const res = await fetch("http://localhost:5000/discover-career", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({
+      interests: interests.value,
+      strengths: strengths.value,
+      work_style: workstyle.value,
+      user_id:"testUser"
+    })
+  });
+
+  const data = await res.json();
+  const box = document.getElementById("result");
+  box.textContent = data.discovery_text;
+  box.classList.add("show");
+
+  btn.innerText = "✨ Reveal My Path";
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>

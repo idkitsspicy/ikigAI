@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Ikigai Roadmap</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow-x: hidden;
+  }
+
+  /* ================= IKIGAI BACKGROUND ================= */
+  .ikigai-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ikigai {
+    position: relative;
+    width: 520px;
+    height: 520px;
+    opacity: 0.25;
+  }
+
+  .circle {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+
+  .love { background:#ec4899; top:0; left:120px; }
+  .good { background:#22c55e; top:120px; left:0; }
+  .need { background:#38bdf8; top:120px; right:0; }
+  .paid { background:#facc15; bottom:0; left:120px; }
+
+  /* ================= MAIN ================= */
+  .container {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 38px;
+    color: #38bdf8;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 26px;
+    font-weight: normal;
+    opacity: 0.9;
+  }
+
+  /* ================= SVG ROAD ================= */
+  svg {
+    position: absolute;
+    top: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    height: 1000px;
+    overflow: visible;
+  }
+
+  path {
+    fill: none;
+    stroke: #38bdf8;
+    stroke-width: 6;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px #38bdf8);
+
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 1600;
+    animation: drawRoad 2.5s ease forwards;
+  }
+
+  @keyframes drawRoad {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ================= STEPS ================= */
+  .step {
+    position: relative;
+    width: 42%;
+    padding: 18px 22px;
+    background: #020617;
+    border: 1px solid #38bdf8;
+    border-radius: 16px;
+    margin-bottom: 140px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+    cursor: pointer;
+  }
+
+  .step.left { margin-right: auto; }
+  .step.right { margin-left: auto; }
+
+  /* NODE */
+  .step::before {
+    content: "";
+    position: absolute;
+    top: 26px;
+    width: 18px;
+    height: 18px;
+    background: #38bdf8;
+    border-radius: 50%;
+    box-shadow: 0 0 18px #38bdf8;
+  }
+
+  .step.left::before { right: -56px; }
+  .step.right::before { left: -56px; }
+
+  .step:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 30px rgba(56,189,248,0.4);
+    transition: all 0.25s ease;
+  }
+
+  /* ================= DETAILS PANEL ================= */
+  .details {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    background: #020617;
+    border: 1px solid #38bdf8;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .step.left .details {
+    left: 110%;
+  }
+
+  .step.right .details {
+    right: 110%;
+  }
+
+  /* Show details on hover OR when active (clicked) */
+.step:hover .details,
+.step.active .details {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+  @keyframes fadeUp {
+    from { transform: translateY(30px); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ================= MOBILE ================= */
+  @media (max-width: 768px) {
+    svg {
+      left: 20px;
+      transform: none;
+    }
+
+    .step {
+      width: 90%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .step::before,
+    .details {
+      display: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- IKIGAI BACKGROUND -->
+<div class="ikigai-bg">
+  <div class="ikigai">
+    <div class="circle love"></div>
+    <div class="circle good"></div>
+    <div class="circle need"></div>
+    <div class="circle paid"></div>
+  </div>
+</div>
+
+<div class="container">
+  <h1 id="careerTitle">YOUR CAREER</h1>
+  <h2>Your Personalized Roadmap</h2>
+
+  <!-- CURVED ROAD -->
+  <svg viewBox="0 0 300 1000">
+    <path d="
+      M150 0
+      C 40 140, 260 280, 150 420
+      C 40 560, 260 700, 150 840
+      C 40 980, 260 1120, 150 1260
+    " />
+  </svg>
+
+  <div id="steps"></div>
+</div>
+
+<script>
+  // Career title
+ const params = new URLSearchParams(window.location.search);
+const career = params.get("career") || "Selected Career";
+
+document.getElementById("careerTitle").innerText = career.toUpperCase();
+
+  // Roadmap data (example format)
+  const roadmapText = localStorage.getItem("roadmap") ||
+`1. Advanced Machine Learning
+Learn ensemble methods, causal inference, and interpretability techniques.
+
+2. MLOps & Deployment
+Understand Docker, CI/CD pipelines, and model monitoring.
+
+3. Big Data Engineering
+Work with Spark, ETL pipelines, and data warehouses.
+
+4. Specialization & Impact
+Choose a niche like Deep Learning, NLP, or Time Series.`;
+
+  const container = document.getElementById("steps");
+
+  const blocks = roadmapText.split("\n\n");
+
+  blocks.forEach((block, index) => {
+    const [title, details] = block.split("\n");
+
+    const step = document.createElement("div");
+    step.className = "step " + (index % 2 === 0 ? "left" : "right");
+    step.style.animationDelay = `${index * 0.4}s`;
+
+    step.innerHTML = `
+      <strong>${title.replace(/^\d+\.\s*/, "")}</strong>
+      <div class="details">${details || "More details coming soon."}</div>
+    `;
+
+    step.addEventListener("click", () => {
+      document.querySelectorAll(".step").forEach(s => {
+        if (s !== step) s.classList.remove("active");
+      });
+      step.classList.toggle("active");
+    });
+
+    container.appendChild(step);
+  });
+</script>
+
+</body>
+</html>
