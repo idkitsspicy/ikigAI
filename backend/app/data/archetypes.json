@@ -1,0 +1,51 @@
+{
+  "autonomy_variety": {
+    "name": "Escape Artist",
+    "description": "You crave freedom, novelty, and independence. You dislike rigid structures and repetitive routines."
+  },
+
+  "pay_autonomy": {
+    "name": "Independent Earner",
+    "description": "You value financial success while maintaining personal freedom and flexibility."
+  },
+
+  "autonomy_alignment": {
+    "name": "Principled Builder",
+    "description": "You want meaningful work, but on your own terms and values."
+  },
+
+  "pay_alignment": {
+    "name": "Prestigious Idealist",
+    "description": "You seek both impact and recognition in your career."
+  },
+
+  "pay_stability": {
+    "name": "Steady Climber",
+    "description": "You value security, growth, and long-term financial comfort."
+  },
+
+  "pay_variety": {
+    "name": "Adaptive Hustler",
+    "description": "You enjoy fast-moving environments, stimulation, and ambitious growth."
+  },
+
+  "autonomy_stability": {
+    "name": "Steady Individualist",
+    "description": "You want independence without chaos or unpredictability."
+  },
+
+  "stability_variety": {
+    "name": "Structured Explorer",
+    "description": "You enjoy variety but still prefer stability and clarity."
+  },
+
+  "stability_alignment": {
+    "name": "Purposeful Planner",
+    "description": "You seek meaningful work within secure and structured environments."
+  },
+
+  "variety_alignment": {
+    "name": "Spontaneous Romantic",
+    "description": "You are driven by creativity, expression, and emotional connection to your work."
+  }
+}
