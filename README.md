@@ -1,138 +1,143 @@
 # IkigAI
+### Identity-Aware Career Operating System
 
-## Find Your Career DNA.
+IkigAI is an AI-powered career intelligence platform that helps users discover careers aligned with their:
+- personality
+- motivation systems
+- environments
+- strengths
+- ambitions
+- sustainability patterns
 
-> “Build a career that feels meaningful, sustainable, and true to who you are.”
-
-IkigAI is an AI-powered career discovery platform that helps students and young professionals discover careers aligned with their personality, values, motivations, and ideal lifestyle.
-
-Instead of relying only on resumes, grades, or standardized career tests, IkigAI explores the deeper question:
-
-> “What kind of work-life system helps a person truly thrive?”
-
-Inspired by the Japanese philosophy of **Ikigai**, the platform helps users discover the intersection between:
-- what excites them
-- what fulfills them
-- how they prefer to work
-- what environments energize them
-- and what kind of life they want to build
+Unlike traditional career platforms that rely on generic quizzes or static roadmaps, IkigAI creates deeply personalized execution blueprints that evolve with the user.
 
 ---
 
-# The Problem
+# Problem
 
-Many people struggle with career decisions not because they lack opportunities, but because they cannot clearly understand:
-- what truly motivates them
-- what kind of work culture suits them
-- what environments drain or energize them
-- and what type of success actually feels meaningful to them
+Most career guidance systems are:
+- skill-first
+- resume-first
+- or based on shallow personality tests
 
-Traditional career guidance systems often:
-- depend on rigid questionnaires
-- focus only on skills or grades
-- ignore emotional sustainability
-- overlook work culture compatibility
-- provide generic recommendations
+They rarely answer:
+- What environments will help me thrive?
+- What kind of work drains me?
+- What motivates me long term?
+- What career identity actually fits me?
+- What should my execution path look like?
 
-As a result, many people end up in careers that may look successful externally, but feel emotionally disconnected internally.
-
----
-
-# Our Vision
-
-IkigAI aims to make career discovery:
-# more human, reflective, and emotionally intelligent.
-
-We believe meaningful careers are built at the intersection of:
-- passion
-- purpose
-- sustainability
-- growth
-- and lifestyle compatibility
-
-Instead of simply matching users to jobs, IkigAI helps them understand:
-- how they naturally operate
-- what environments help them grow
-- what work cultures align with them
-- and what tradeoffs they are willing to make
+As a result, many people:
+- choose careers they cannot sustain
+- burn out
+- lose direction
+- or feel disconnected from their work
 
 ---
 
-# Core Concept
+# Solution
 
-IkigAI transforms career discovery into an interactive self-exploration experience.
+IkigAI acts as an identity-aware career operating system.
 
-Users don’t just answer static questions.
+Instead of asking:
+> “What job do you want?”
 
-Instead, they:
-- build work systems
-- make value-based tradeoffs
-- react to simulated work-life situations
-- and explore different career environments
+we ask:
+> “What kind of person are you becoming?”
 
-Through these interactions, the platform identifies:
-- motivational patterns
-- emotional needs
-- work-style preferences
+The platform analyzes:
+- energy drivers
+- sacrifice tolerance
+- environment compatibility
+- creative behavior
+- ambition patterns
+- systems thinking
+- growth style
+- identity tensions
+
+and transforms them into:
+- AI-generated career identities
+- personalized execution blueprints
+- adaptive career roadmaps
+- progress systems
+
+---
+
+# Core Features
+
+## 1. Identity Discovery Layer
+
+Interactive onboarding experience where users:
+- build their ideal world
+- choose environments
+- select motivational drivers
+- define sacrifices
+- explore work psychology
+
+This avoids traditional boring questionnaires and creates a reflective experience.
+
+---
+
+## 2. AI Identity Synthesis
+
+AI generates:
+- identity core
+- hidden tensions
 - burnout risks
-- and ideal career environments
+- ideal environments
+- energy drivers
+- compatible career paths
+
+This creates a much deeper understanding of the user than standard personality systems.
 
 ---
 
-# Key Features
+## 3. Career Role Intelligence
 
-## Interactive Work-System Builder
-Users design their ideal work environment using system blocks such as:
-- Freedom Engine
-- Mission Core
-- Security Grid
-- Promotion Ladder
-- Automation Engine
+Instead of generic job lists, IkigAI generates:
+- identity-aligned career roles
+- explanations for why each role fits
+- ideal personality/environment matches
 
-Each system represents different work values and lifestyle structures.
-
----
-
-## AI-Powered Career Interpretation
-Using:
-- Jac
-- byLLM
-- Gemini 2.5 Flash
-
-IkigAI generates personalized psychological insights and career recommendations.
+Examples:
+- AI Product Strategist
+- Creative Technologist
+- Systems Designer
+- Research Architect
 
 ---
 
-## Work Culture Compatibility Analysis
-The platform evaluates compatibility with different work cultures such as:
-- fast-paced startups
-- structured corporate systems
-- mission-driven organizations
-- creative environments
-- independent work ecosystems
+## 4. AI Execution Blueprint Generator
+
+Users can commit to a career path and generate:
+- personalized career roadmaps
+- execution phases
+- project milestones
+- mindset shifts
+- skill development systems
+- environmental recommendations
+
+The roadmap is:
+- adaptive
+- emotionally intelligent
+- identity-aware
+- sustainable
 
 ---
 
-## Emotional Sustainability & Burnout Awareness
-IkigAI recognizes that long-term fulfillment depends not only on skills, but also on emotional sustainability.
+## 5. Progress Dashboard
 
-The system identifies:
-- potential burnout triggers
-- overstimulation risks
-- lack-of-purpose fatigue
-- structure vs freedom conflicts
-- and environmental stress patterns
+Users can:
+- choose a path
+- track milestones
+- monitor execution progress
+- continue evolving inside the platform
 
----
+This transforms IkigAI from:
+> a one-time quiz
 
-## Psychological Operating Systems
-Instead of generic personality labels, IkigAI identifies:
-- motivational architectures
-- work-life priorities
-- internal tensions
-- and growth patterns
-
-Helping users better understand how they naturally approach work and life.
+into:
+> a persistent career companion
 
 ---
 
@@ -140,31 +145,32 @@ Helping users better understand how they naturally approach work and life.
 
 ## Frontend
 - Next.js
-- TailwindCSS
+- TypeScript
+- Tailwind CSS
 - Framer Motion
 
 ## Backend
 - FastAPI
 - Python
 
-## AI Layer
-- Jac
-- byLLM
+## AI
 - Gemini 2.5 Flash
+- Jac (identity synthesis layer)
+
+## Database
+- Firebase Firestore
 
 ---
 
 # Architecture
 
 ```text
-Frontend Experience
+User Identity Discovery
         ↓
-Interactive System Builder
+AI Identity Synthesis
         ↓
-Psychological Pattern Analysis
+Career Role Intelligence
         ↓
-Jac + byLLM Interpretation Layer
+Execution Blueprint Generation
         ↓
-AI Career Insight Generation
-        ↓
-Personalized Career DNA Reveal
+Progress Tracking
