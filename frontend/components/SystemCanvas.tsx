@@ -4,11 +4,15 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 
-import { systemBlocks } from "../data/systemBlocks";
+import { systemBlocks } from "@/data/systemBlocks";
 
 
 
-export default function SystemCanvas() {
+export default function SystemCanvas({
+  onContinue
+}: {
+  onContinue: (systems: string[]) => void;
+}) {
 
   const [placedSystems, setPlacedSystems] =
     useState<any[]>([]);
@@ -23,11 +27,7 @@ export default function SystemCanvas() {
 
     if (exists) return;
 
-
-
     if (placedSystems.length >= 4) return;
-
-
 
     setPlacedSystems([
       ...placedSystems,
@@ -133,7 +133,9 @@ export default function SystemCanvas() {
                   scale: 0.98
                 }}
 
-                onClick={() => handleAddSystem(system)}
+                onClick={() =>
+                  handleAddSystem(system)
+                }
 
                 className={`
                   ${system.color}
@@ -377,6 +379,55 @@ export default function SystemCanvas() {
             </div>
 
           </motion.div>
+
+        </div>
+
+
+
+        {/* CONTINUE BUTTON */}
+
+        <div className="
+          mt-12
+          flex
+          justify-end
+        ">
+
+          <motion.button
+
+            whileHover={{
+              x: 4,
+              y: 4
+            }}
+
+            whileTap={{
+              scale: 0.96
+            }}
+
+            onClick={() => {
+
+              const systemTitles =
+                placedSystems.map(
+                  system => system.title
+                );
+
+              onContinue(systemTitles);
+            }}
+
+            className="
+              bg-green-300
+              border-4
+              border-black
+              shadow-[8px_8px_0px_#000]
+              px-8
+              py-5
+              text-2xl
+              font-black
+            "
+          >
+
+            Continue →
+
+          </motion.button>
 
         </div>
 
