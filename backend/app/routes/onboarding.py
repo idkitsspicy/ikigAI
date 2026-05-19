@@ -1,63 +1,64 @@
 from fastapi import APIRouter
-from uuid import uuid4
 
-from app.models.session import SessionState
-from app.data.questions import questions
-from app.services.scoring_engine import update_scores
+from app.routes.onboarding import sessions
+from app.jac.jac_service import generate_personality_report
+from app.services.archetype_engine import resolve_archetype
+
 
 router = APIRouter()
 
-sessions = {}
 
+@router.get("/result/{session_id}")
 
-@router.post("/start")
-
-def start_session():
-
-    session_id = str(uuid4())
-
-    session = SessionState(session_id=session_id)
-
-    sessions[session_id] = session
-
-    first_question = questions[0]
-
-    return {
-        "session_id": session_id,
-        "question": first_question
-    }
-
-
-
-@router.post("/answer")
-
-def answer_question(data: dict):
-
-    session_id = data["session_id"]
-
-    selected_traits = data["traits"]
+def get_result(session_id: str):
 
     session = sessions[session_id]
 
-    session.scores = update_scores(
-        session.scores,
-        selected_traits
-    )
+    archetype = resolve_archetype(session.scores)
 
-    session.answers.append(data)
+    prompt = f"""
 
-    session.current_question += 1
+You are an emotionally intelligent AI career psychologist.
 
-    if session.current_question >= len(questions):
+A user completed an IkigAI personality exploration.
 
-        return {
-            "message": "completed",
-            "scores": session.scores
-        }
+Their psychological scores are:
 
-    next_question = questions[session.current_question]
+{session.scores}
+
+Their archetype is:
+
+{archetype["name"]}
+
+Archetype description:
+
+{archetype["description"]}
+
+Generate:
+1. Deep personality insight
+2. Strengths
+3. Burnout risks
+4. Ideal work environments
+5. Careers that fit them
+6. Careers they may dislike
+
+Keep it emotionally intelligent, warm, reflective, and insightful.
+
+Avoid corporate tone.
+Avoid sounding robotic.
+
+"""
+
+    insight = generate_personality_report(
+    session.scores,
+    archetype
+)
 
     return {
-        "question": next_question,
-        "scores": session.scores
-    }
+
+    "scores": session.scores,
+
+    "archetype": archetype,
+
+    "insight": insight
+}
